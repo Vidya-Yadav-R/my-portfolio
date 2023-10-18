@@ -1,26 +1,25 @@
-$(document).ready(function(){
-    // Toggle menu on button click
-    $('.menu-btn').click(function(){
-        $('.menu').toggleClass('active');
-    });
+//hide witch after 2s
+const hideWitch = () => {
+  const witchElement = document.querySelector(".container");
+  witchElement.style.display = "none";
+};
+setTimeout(hideWitch, 2000);
 
-    // Close menu when a menu item is clicked
-    $('.menu li a').click(function(){
-        $('.menu').removeClass('active');
-    });
+//show content after 2s 
+const showNavbar = () => {
+  const navbar = document.querySelector(".delay");
+  navbar.style.display = "block";
+};
+setTimeout(showNavbar, 2000);
 
-    // Sticky navbar
-    $(window).scroll(function(){
-        if($(this).scrollTop() > 20){
-            $('.navbar').addClass("sticky");
-        }else{
-            $('.navbar').removeClass("sticky");
-        }
-    });
+// JavaScript to toggle sections only on mobile devices
+if (window.innerWidth <= 767) {
+  const sections = document.querySelectorAll('.delay');
+  const menuBtn = document.querySelector('.menu-btn');
 
-    //toggle menu/navbar script
-    $('.menu-btn').click(function(){
-        $('.navbar .menu').toggleClass("active");
-        $('.menu-btn i').toggleClass("active");
+  menuBtn.addEventListener('click', () => {
+    sections.forEach((section) => {
+      section.classList.toggle('show');
     });
-});
+  });
+}
